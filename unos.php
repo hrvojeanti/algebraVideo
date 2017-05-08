@@ -2,6 +2,8 @@
 
 require 'includes/header.php';
 require 'funkcije.php';
+require 'functions/dataLogin.php';
+
 
 if( !isset($_SESSION['user_id']) )
 {
@@ -13,10 +15,37 @@ if( !isset($_SESSION['user_id']) )
 	die();
 }
 
+if( isset($_POST['naslov'])) {
+
+		$sql = 'INSERT INTO filmovi(`naslov`, `id_zanr`, `godina`, `trajanje`, `slika`) VALUES(
+																:naslov, :id_zanr, :godina, :trajanje, :slika )';
+		$ubaci = $conn->prepare($sql);
+
+		$ubaci->bindParam(':naslov', $_POST['naslov']);
+		$ubaci->bindParam(':id_zanr', $_POST['zanr']);
+		$ubaci->bindParam(':godina', $_POST['godina']);
+		$ubaci->bindParam(':trajanje', $_POST['trajanje']);
+		$ubaci->bindParam(':slika', $_FILES['slika']['name']);
+		$ubaci->execute();
+
+
+		$target = "images/".basename($_FILES['slika']['name']);
+		if( move_uploaded_file($_FILES['slika']['tmp_name'], $target)) 
+		{
+			$msg = "Image uploaded successfully";
+		}
+		else
+		{
+			$msg = "There was a problem uploading image";
+		}
+
+
+}
 
 ?>
+
 <div class="container">
-	<form>
+	<form method="POST" action="" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="naslov">Naslov</label>
 			<input type="text" class="form-control" value="upisite naslov" name="naslov" /><br/>
@@ -26,7 +55,7 @@ if( !isset($_SESSION['user_id']) )
 				<?php  // zanrove stalvjamo u padajuci izbornik
 					foreach(Funkcije::fetch_zanr() as $zanr) 
 					{
-						echo '<option>' . $zanr['naziv'] . '</option>';
+						echo '<option value=1>' . $zanr['naziv'] . '</option>';
 					}
 				?>
 			</select><br/>
