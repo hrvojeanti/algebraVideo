@@ -22,7 +22,7 @@ if(!empty($_POST['email']) && !empty($_POST['password'])):
 
 	// with execute we run the statement
 	if($stmt->execute() ):
-		$message = 'Successfuly created new user';
+		$message = 'Successfuly created new user'; 
 	else:
 		$message = 'Sorry there must be an issue creating your account';
 	endif;

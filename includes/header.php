@@ -2,6 +2,7 @@
 $ser = $_SERVER['REQUEST_URI'];
 $cur_site = '';
 
+session_start();
 
 // ovo sluzi za provjeru tako da znamo na kojem smo sajtu
 if(strpos($ser, 'login.php'))
@@ -72,12 +73,18 @@ elseif(strpos($ser, 'unos.php'))
 				?>
 				><a href="unos.php">Unos</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-
-				<li><a href="login.php">Login</a></li>
-
-
-			</ul>
+			<?php
+			if( !isset($_SESSION['user_id'])) {
+			echo ' <ul class="nav navbar-nav navbar-right"> <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Registriraj se</a></li> <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> Prijavi se</a></li>	</ul>';
+			} else {
+				echo ' <ul class="nav navbar-nav navbar-right"> 
+				<li><a href="logout.php">
+				<span class="glyphicon glyphicon-user"></span> Log out</a></li> 
+				<li><a href="login.php">
+				<span class="glyphicon glyphicon-user"></span>' . $_SESSION['user'] . '</a></li>	
+				</ul>';
+			}
+   		?>
 		</div>
 
 	</div>

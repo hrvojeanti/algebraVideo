@@ -3,6 +3,15 @@
 require 'includes/header.php';
 require 'funkcije.php';
 
+if( !isset($_SESSION['user_id']) )
+{
+?>
+	<div class="container">
+	<h4>Moras biti logiran da bi unosio podatake, <a href="login.php">logiraj se</a></h4>
+	</div>
+<?php
+	die();
+}
 
 
 ?>
