@@ -17,6 +17,10 @@ elseif(strpos($ser, 'unos.php'))
 {
 	$cur_site = 'unos';
 }
+elseif(strpos($ser, 'filmovi.php'))
+{
+	$cur_site = 'filmovi';
+}
 
 ?>
 
@@ -29,10 +33,16 @@ elseif(strpos($ser, 'unos.php'))
 		switch($cur_site)
 		{
 			case('home'):
-				echo 'home videoteka';
+				echo 'Home videoteka';
 				break;
 			case('login'):
-				echo 'login videoteka';
+				echo 'Login videoteka';
+				break;
+			case('filmovi'):
+				echo 'Filmovi videoteka';
+				break;
+			case('unos'):
+				echo 'Unos videoteka';
 				break;
 			default:
 				echo 'videoteka';
@@ -66,7 +76,11 @@ elseif(strpos($ser, 'unos.php'))
 					if($cur_site == 'home') echo 'class=active';
 				?>
 					><a href="index.php">Home</a></li>
-				<li><a href="#">Filmovi</a></li>
+				<li
+				<?php	// cinimo filmovi aktivnim
+					if($cur_site == 'filmovi') echo 'class=active';
+				?>
+				><a href="filmovi.php">Filmovi</a></li>
 				<li
 				<?php	// cinimo home aktivnim
 					if($cur_site == 'unos') echo 'class=active';

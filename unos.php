@@ -17,16 +17,7 @@ if( !isset($_SESSION['user_id']) )
 
 if( isset($_POST['naslov'])) {
 
-		$sql = 'INSERT INTO filmovi(`naslov`, `id_zanr`, `godina`, `trajanje`, `slika`) VALUES(
-																:naslov, :id_zanr, :godina, :trajanje, :slika )';
-		$ubaci = $conn->prepare($sql);
-
-		$ubaci->bindParam(':naslov', $_POST['naslov']);
-		$ubaci->bindParam(':id_zanr', $_POST['zanr']);
-		$ubaci->bindParam(':godina', $_POST['godina']);
-		$ubaci->bindParam(':trajanje', $_POST['trajanje']);
-		$ubaci->bindParam(':slika', $_FILES['slika']['name']);
-		$ubaci->execute();
+		Funkcije::input_filmovi();
 
 
 		$target = "images/".basename($_FILES['slika']['name']);

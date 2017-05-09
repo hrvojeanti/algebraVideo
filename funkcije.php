@@ -19,7 +19,7 @@ class Funkcije
 	public function input_filmovi()
 	{
 		global $conn;
-		echo 'tu sam'
+		
 		$sql = 'INSERT INTO filmovi(`naslov`, `id_zanr`, `godina`, `trajanje`, `slika`) VALUES(
 																:naslov, :id_zanr, :godina, :trajanje, :slika )';
 		$ubaci = $conn->prepare($sql);
@@ -27,9 +27,12 @@ class Funkcije
 		$ubaci->bindParam(':id_zanr', $_POST['zanr']);
 		$ubaci->bindParam(':godina', $_POST['godina']);
 		$ubaci->bindParam(':trajanje', $_POST['trajanje']);
-		$ubaci->bindParam(':slika', $_POST['slika']);
+		$ubaci->bindParam(':slika', $_FILES['slika']['name']);
 		$ubaci->execute();
 	}
+
+	
+
 }
 
 
