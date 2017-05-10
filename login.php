@@ -52,6 +52,7 @@ if( !empty($_POST['name']) && !empty($_POST['pass']) )
 			<br/>
 
 		<button type="submit" class="btn btn-primary">Submit</button><br/><br/>
-		<p>Dont have a account, register <a href="register.php">here</a></p>
+		<p>Nemas racun, registriraj se <a href="register.php">ovdje</a></p>
 	</form>
 </div>
+
