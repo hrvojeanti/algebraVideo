@@ -22,7 +22,7 @@ for($i=1; $i<=26; $i++)
 
 
 
-// trazenje filmova po slovima
+// trazenje filmova po slovima i ispis filmova koji pocinju istim
 if ( isset($_GET['s']))
 {
 	echo '<br/><br/></div>';

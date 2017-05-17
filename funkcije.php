@@ -16,6 +16,7 @@ class Funkcije
 
 	}
 
+	// stvaram tablicu i stavljam filmove iz baze u nju za filmovi.php
 	public function input_filmovi()
 	{
 		global $conn;
@@ -46,6 +47,7 @@ class Funkcije
 		}
 	}
 
+	// dodajemo zanrove u tablicu
 	public function dodaj_zanr() {
 		global $conn;
 

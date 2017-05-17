@@ -1,3 +1,4 @@
+
 <?php
 
 require 'includes/header.php';
@@ -5,9 +6,13 @@ require 'funkcije.php';
 require 'functions/dataLogin.php';
 
 
+
 if( !isset($_SESSION['user_id']) )
 {
 ?>
+
+
+
 	<div class="container">
 	<h4>Moras biti logiran da bi unosio podatake, <a href="login.php">logiraj se</a></h4>
 	</div>
@@ -43,7 +48,7 @@ if( isset($_POST['unos_zanr']))
 
 <div class="container">
 	<h4>Dodaj film:</h4>
-	<form method="POST" action="" enctype="multipart/form-data">
+	<form name="Form" method="POST" action="" enctype="multipart/form-data" onsubmit="validateForm()" >
 		<div class="form-group">
 			<label for="naslov">Naslov:</label>
 			<input type="text" class="form-control" value="upisite naslov" name="naslov" /><br/>
@@ -82,6 +87,9 @@ if( isset($_POST['unos_zanr']))
 		
 	</form>
 </div>
+
+
+
 			
 <br/>	
 <br/>
@@ -99,3 +107,18 @@ if( isset($_POST['unos_zanr']))
 	</form>
 </div>
 
+<script type="text/javascript">
+    function validateForm()
+    {
+    var a=document.forms["Form"]["naslov"].value;
+    var b=document.forms["Form"]["zanr"].value;
+    var c=document.forms["Form"]["godina"].value;
+    var d=document.forms["Form"]["trajanje"].value;
+    var e=document.forms["Form"]["slika"].value;
+    if (a==null || a=="",b==null || b=="",c==null || c=="",d==null || d=="", e==null|| e=="")
+      {
+      alert("Please Fill All Required Field");
+			throw new Error("Something went badly wrong!");      
+		}
+    }
+</script>

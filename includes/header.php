@@ -63,9 +63,7 @@ elseif(strpos($ser, 'filmovi.php'))
 	<div class="container-fluid">
 		<!-- Ako želimo logo -->
 		
-		<div class="navbar-header" id="logo">
-			<a href="#" class="navbar-brand">Videoteka</a>
-		</div>
+
 
 		<!-- menu items -->
 
@@ -93,9 +91,9 @@ elseif(strpos($ser, 'filmovi.php'))
 			} else {
 				echo ' <ul class="nav navbar-nav navbar-right"> 
 				<li><a href="logout.php">
-				<span class="glyphicon glyphicon-user"></span> Log out</a></li> 
-				<li><a href="login.php">
-				<span class="glyphicon glyphicon-user"></span>' . $_SESSION['user'] . '</a></li>	
+				<span ></span> Log out</a></li> 
+				<li><a href="index.php">
+				<span ></span>' . $_SESSION['user'] . '</a></li>	
 				</ul>';
 			}
    		?>
